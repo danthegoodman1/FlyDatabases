@@ -1,0 +1,263 @@
+### Create an app
+POST https://api.machines.dev/v1/apps
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+{
+  "app_name": "scylla-db",
+  "org_slug": "personal"
+}
+
+### Create a machine
+POST https://api.machines.dev/v1/apps/scylla-db/machines
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+{
+  "name": "scylla-0",
+  "config": {
+    "image": "registry.fly.io/scylla-db:5.2",
+    "services": [
+      {
+        "ports": [
+          {
+            "port": 9160
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 9160
+      },
+      {
+        "ports": [
+          {
+            "port": 9042
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 9042
+      },
+      {
+        "ports": [
+          {
+            "port": 9142
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 9142
+      }
+    ],
+    "checks": {
+      "tcpcheck": {
+        "type": "tcp",
+        "port": 9042,
+        "interval": "15s",
+        "timeout": "10s"
+      }
+    }
+  }
+}
+
+# "id": "32874e1dc11785",
+# "name": "scylla-0",
+# "state": "created",
+# "region": "ewr",
+# "instance_id": "01H0X6NVSK7BN7X5EWPNNA88DB",
+# "private_ip": "fdaa:1:e6d1:a7b:15f:f165:d3d4:2"
+
+### Create a second machine
+POST https://api.machines.dev/v1/apps/scylla-db/machines
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+{
+  "name": "scylla-1",
+  "config": {
+    "image": "registry.fly.io/scylla-db:5.2",
+    "services": [
+      {
+        "ports": [
+          {
+            "port": 9160
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 9160
+      },
+      {
+        "ports": [
+          {
+            "port": 9042
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 9042
+      },
+      {
+        "ports": [
+          {
+            "port": 9142
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 9142
+      }
+    ],
+    "checks": {
+      "tcpcheck": {
+        "type": "tcp",
+        "port": 9042,
+        "interval": "15s",
+        "timeout": "10s"
+      }
+    }
+  }
+}
+
+# "id": "4d891407f20787",
+# "name": "scylla-1",
+# "state": "created",
+# "region": "ewr",
+# "instance_id": "01H0X6Q4HQ7820R02GSPCP00CH",
+# "private_ip": "fdaa:1:e6d1:a7b:15e:46c7:cdde:2"
+
+### List machines
+GET https://api.machines.dev/v1/apps/scylla-db/machines
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+### Update the first machine for the seeds
+POST https://api.machines.dev/v1/apps/scylla-db/machines/32874e1dc11785
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+{
+  "name": "scylla-0",
+  "config": {
+    "image": "registry.fly.io/scylla-db:5.2v6",
+    "size": "performance-2x",
+    "env": {
+      "SEEDS": "32874e1dc11785.vm.scylla-db.internal,4d891407f20787.vm.scylla-db.internal",
+      "SMP": "2",
+      "MEM": "2G",
+      "OVERPROV": "1",
+      "API_ADDR": "0.0.0.0",
+      "ADV_ADDR": "32874e1dc11785.vm.scylla-db.internal"
+    },
+    "services": [
+      {
+        "ports": [
+          {
+            "port": 9160
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 9160
+      },
+      {
+        "ports": [
+          {
+            "port": 9042
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 9042
+      },
+      {
+        "ports": [
+          {
+            "port": 10000
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 10000
+      },
+      {
+        "ports": [
+          {
+            "port": 9142
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 9142
+      }
+    ]
+  }
+}
+
+### Update the second machine for the seeds
+POST https://api.machines.dev/v1/apps/scylla-db/machines/4d891407f20787
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+{
+  "name": "scylla-1",
+  "config": {
+    "image": "registry.fly.io/scylla-db:5.2v6",
+    "size": "performance-2x",
+    "env": {
+      "SEEDS": "32874e1dc11785.vm.scylla-db.internal,4d891407f20787.vm.scylla-db.internal",
+      "SMP": "2",
+      "MEM": "2G",
+      "OVERPROV": "1",
+      "API_ADDR": "0.0.0.0",
+      "ADV_ADDR": "4d891407f20787.vm.scylla-db.internal"
+    },
+    "services": [
+      {
+        "ports": [
+          {
+            "port": 9160
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 9160
+      },
+      {
+        "ports": [
+          {
+            "port": 9042
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 9042
+      },
+      {
+        "ports": [
+          {
+            "port": 10000
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 10000
+      },
+      {
+        "ports": [
+          {
+            "port": 9142
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 9142
+      }
+    ]
+  }
+}
+
+### Start the first machine
+POST https://api.machines.dev/v1/apps/scylla-db/machines/32874e1dc11785/start
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+### Start the second machine
+POST https://api.machines.dev/v1/apps/scylla-db/machines/4d891407f20787/start
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+### Stop the first machine
+POST https://api.machines.dev/v1/apps/scylla-db/machines/32874e1dc11785/stop
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+### Stop the second machine
+POST https://api.machines.dev/v1/apps/scylla-db/machines/4d891407f20787/stop
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc

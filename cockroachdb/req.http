@@ -1,0 +1,169 @@
+### Create an app
+POST https://api.machines.dev/v1/apps
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+{
+  "app_name": "crdb",
+  "org_slug": "personal"
+}
+
+### Create a machine
+POST https://api.machines.dev/v1/apps/crdb/machines
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+{
+  "name": "crdb-0",
+  "config": {
+    "image": "cockroachdb/cockroach:v23.1.1"
+  }
+}
+
+### Create a second machine
+POST https://api.machines.dev/v1/apps/crdb/machines
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+{
+  "name": "crdb-1",
+  "config": {
+    "image": "cockroachdb/cockroach:v23.1.1"
+  }
+}
+
+### Stop the first machine
+POST https://api.machines.dev/v1/apps/crdb/machines/5683d706a6578e/stop
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+### Stop the second machine
+POST https://api.machines.dev/v1/apps/crdb/machines/918570e5b75583/stop
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+### List machines
+GET https://api.machines.dev/v1/apps/crdb/machines
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+### Update the first machine for the seeds
+POST https://api.machines.dev/v1/apps/crdb/machines/5683d706a6578e
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+{
+  "name": "crdb-0",
+  "config": {
+    "image": "cockroachdb/cockroach:v23.1.1",
+    "size": "performance-2x",
+    "processes": [
+      {
+        "name": "crdb",
+        "entrypoint": ["/cockroach/cockroach.sh"],
+        "cmd": ["start", "--insecure", "--join", "5683d706a6578e.vm.crdb.internal,918570e5b75583.vm.crdb.internal", "--listen-addr", "0.0.0.0", "--advertise-addr", "5683d706a6578e.vm.crdb.internal"]
+      }
+    ],
+    "services": [
+      {
+        "ports": [
+          {
+            "port": 26257
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 26257
+      },
+      {
+        "ports": [
+          {
+            "port": 8080
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 8080
+      }
+    ],
+    "checks": {
+      "httpcheck": {
+        "type": "http",
+        "protocol": "http",
+        "path": "/health",
+        "method": "GET",
+        "port": 8080,
+        "interval": "30s",
+        "timeout": "30s"
+      }
+    }
+  }
+}
+
+### Update the second machine for the seeds
+POST https://api.machines.dev/v1/apps/crdb/machines/918570e5b75583
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+{
+  "name": "crdb-1",
+  "config": {
+    "image": "cockroachdb/cockroach:v23.1.1",
+    "size": "performance-2x",
+    "processes": [
+      {
+        "name": "crdb",
+        "entrypoint": ["/cockroach/cockroach.sh"],
+        "cmd": ["start", "--insecure", "--join", "5683d706a6578e.vm.crdb.internal,918570e5b75583.vm.crdb.internal", "--listen-addr", "0.0.0.0", "--advertise-addr", "918570e5b75583.vm.crdb.internal"]
+      }
+    ],
+    "services": [
+      {
+        "ports": [
+          {
+            "port": 26257
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 26257
+      },
+      {
+        "ports": [
+          {
+            "port": 8080
+          }
+        ],
+        "protocol": "tcp",
+        "internal_port": 8080
+      }
+    ],
+    "checks": {
+      "httpcheck": {
+        "type": "http",
+        "protocol": "http",
+        "path": "/health",
+        "method": "GET",
+        "port": 8080,
+        "interval": "30s",
+        "timeout": "30s"
+      }
+    }
+  }
+}
+
+### Start the first machine
+POST https://api.machines.dev/v1/apps/crdb/machines/5683d706a6578e/start
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+### Start the second machine
+POST https://api.machines.dev/v1/apps/crdb/machines/918570e5b75583/start
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+### Stop the first machine
+POST https://api.machines.dev/v1/apps/crdb/machines/5683d706a6578e/stop
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+
+### Stop the second machine
+POST https://api.machines.dev/v1/apps/crdb/machines/918570e5b75583/stop
+Content-Type: application/json
+Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
