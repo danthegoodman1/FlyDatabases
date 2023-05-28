@@ -1,7 +1,7 @@
 ### Create an app
 POST https://api.machines.dev/v1/apps
 Content-Type: application/json
-Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 {
   "app_name": "crdb",
@@ -11,7 +11,7 @@ Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
 ### Create a machine
 POST https://api.machines.dev/v1/apps/crdb/machines
 Content-Type: application/json
-Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 {
   "name": "crdb-0",
@@ -23,7 +23,7 @@ Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
 ### Create a second machine
 POST https://api.machines.dev/v1/apps/crdb/machines
 Content-Type: application/json
-Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 {
   "name": "crdb-1",
@@ -35,21 +35,21 @@ Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
 ### Stop the first machine
 POST https://api.machines.dev/v1/apps/crdb/machines/5683d706a6578e/stop
 Content-Type: application/json
-Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 ### Stop the second machine
 POST https://api.machines.dev/v1/apps/crdb/machines/918570e5b75583/stop
 Content-Type: application/json
-Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 ### List machines
 GET https://api.machines.dev/v1/apps/crdb/machines
-Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 ### Update the first machine for the seeds
 POST https://api.machines.dev/v1/apps/crdb/machines/5683d706a6578e
 Content-Type: application/json
-Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 {
   "name": "crdb-0",
@@ -100,7 +100,7 @@ Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
 ### Update the second machine for the seeds
 POST https://api.machines.dev/v1/apps/crdb/machines/918570e5b75583
 Content-Type: application/json
-Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 {
   "name": "crdb-1",
@@ -151,19 +151,19 @@ Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
 ### Start the first machine
 POST https://api.machines.dev/v1/apps/crdb/machines/5683d706a6578e/start
 Content-Type: application/json
-Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 ### Start the second machine
 POST https://api.machines.dev/v1/apps/crdb/machines/918570e5b75583/start
 Content-Type: application/json
-Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 ### Stop the first machine
 POST https://api.machines.dev/v1/apps/crdb/machines/5683d706a6578e/stop
 Content-Type: application/json
-Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 ### Stop the second machine
 POST https://api.machines.dev/v1/apps/crdb/machines/918570e5b75583/stop
 Content-Type: application/json
-Authorization: Bearer fo1_K93NytdF4P1H4iO5NQIuhng4GHD5W4TaeoEcKE4eNkc
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g

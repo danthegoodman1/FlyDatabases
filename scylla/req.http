@@ -1,7 +1,7 @@
 ### Create an app
 POST https://api.machines.dev/v1/apps
 Content-Type: application/json
-Authorization: Bearer xxx
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 {
   "app_name": "scylla-db",
@@ -11,12 +11,12 @@ Authorization: Bearer xxx
 ### Create a machine
 POST https://api.machines.dev/v1/apps/scylla-db/machines
 Content-Type: application/json
-Authorization: Bearer xxx
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 {
   "name": "scylla-0",
   "config": {
-    "image": "registry.fly.io/scylla-db:5.2",
+    "image": "nginxdemos/hello",
     "services": [
       {
         "ports": [
@@ -67,7 +67,7 @@ Authorization: Bearer xxx
 ### Create a second machine
 POST https://api.machines.dev/v1/apps/scylla-db/machines
 Content-Type: application/json
-Authorization: Bearer xxx
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 {
   "name": "scylla-1",
@@ -122,12 +122,17 @@ Authorization: Bearer xxx
 
 ### List machines
 GET https://api.machines.dev/v1/apps/scylla-db/machines
-Authorization: Bearer xxx
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
+
+
+### Get the machine
+GET https://api.machines.dev/v1/apps/scylla-db/machines/e2865371aee578
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 ### Update the first machine for the seeds
 POST https://api.machines.dev/v1/apps/scylla-db/machines/32874e1dc11785
 Content-Type: application/json
-Authorization: Bearer xxx
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 {
   "name": "scylla-0",
@@ -186,7 +191,7 @@ Authorization: Bearer xxx
 ### Update the second machine for the seeds
 POST https://api.machines.dev/v1/apps/scylla-db/machines/4d891407f20787
 Content-Type: application/json
-Authorization: Bearer xxx
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 {
   "name": "scylla-1",
@@ -245,19 +250,19 @@ Authorization: Bearer xxx
 ### Start the first machine
 POST https://api.machines.dev/v1/apps/scylla-db/machines/32874e1dc11785/start
 Content-Type: application/json
-Authorization: Bearer xxx
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 ### Start the second machine
 POST https://api.machines.dev/v1/apps/scylla-db/machines/4d891407f20787/start
 Content-Type: application/json
-Authorization: Bearer xxx
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 ### Stop the first machine
 POST https://api.machines.dev/v1/apps/scylla-db/machines/32874e1dc11785/stop
 Content-Type: application/json
-Authorization: Bearer xxx
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
 
 ### Stop the second machine
 POST https://api.machines.dev/v1/apps/scylla-db/machines/4d891407f20787/stop
 Content-Type: application/json
-Authorization: Bearer xxx
+Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
