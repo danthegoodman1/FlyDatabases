@@ -53,6 +53,10 @@ Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
         "interval": "15s",
         "timeout": "10s"
       }
+    },
+    "metrics": {
+      "port": 9180,
+      "path": "/metrics"
     }
   }
 }
@@ -109,6 +113,10 @@ Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
         "interval": "15s",
         "timeout": "10s"
       }
+    },
+    "metrics": {
+      "port": 9180,
+      "path": "/metrics"
     }
   }
 }
@@ -184,7 +192,11 @@ Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
         "protocol": "tcp",
         "internal_port": 9142
       }
-    ]
+    ],
+    "metrics": {
+      "port": 9180,
+      "path": "/metrics"
+    }
   }
 }
 
@@ -243,7 +255,11 @@ Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
         "protocol": "tcp",
         "internal_port": 9142
       }
-    ]
+    ],
+    "metrics": {
+      "port": 9180,
+      "path": "/metrics"
+    }
   }
 }
 

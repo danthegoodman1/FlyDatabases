@@ -93,6 +93,10 @@ Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
         "interval": "30s",
         "timeout": "30s"
       }
+    },
+    "metrics": {
+      "port": 8080,
+      "path": "/_status/vars"
     }
   }
 }
@@ -144,6 +148,10 @@ Authorization: Bearer fo1_MGilE9PJGF-etiWRKRmnqWBVfwUIVEY93X6nMfze93g
         "interval": "30s",
         "timeout": "30s"
       }
+    },
+    "metrics": {
+      "port": 8080,
+      "path": "/_status/vars"
     }
   }
 }
